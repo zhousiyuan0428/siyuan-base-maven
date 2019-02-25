@@ -13,7 +13,7 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 public class Application {
 
-    private static final Logger log = LoggerFactory.getLogger(Application.class);
+    private static final Logger logger = LoggerFactory.getLogger(Application.class);
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
@@ -29,7 +29,7 @@ public class Application {
         return args -> {
             Quote quote = restTemplate.getForObject(
                     "http://gturnquist-quoters.cfapps.io/api/random", Quote.class);
-            log.info(quote.toString());
+            logger.info(quote.toString());
         };
     }
 }
