@@ -2,13 +2,10 @@ package com.siyuan.base.web;
 
 import com.siyuan.base.biz.ClothesRepository;
 import com.siyuan.base.biz.UserRepository;
-import com.siyuan.base.entity.Clothes;
-import com.siyuan.base.entity.User;
+import com.siyuan.base.dao.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @Controller
 @RequestMapping(path="/clothes")

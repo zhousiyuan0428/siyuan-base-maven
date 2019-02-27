@@ -1,4 +1,4 @@
-package com.siyuan.base.entity;
+package com.siyuan.base.dao.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

@@ -1,4 +1,4 @@
-package com.siyuan.base.entity;
+package com.siyuan.base.dao.entity;
 
 import javax.persistence.*;
 
@@ -13,6 +13,16 @@ public class User {
     private Integer age;
 
     private String email;
+
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
     public Integer getId() {
         return id;

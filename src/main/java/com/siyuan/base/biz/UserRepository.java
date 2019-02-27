@@ -1,6 +1,6 @@
 package com.siyuan.base.biz;
 
-import com.siyuan.base.entity.User;
+import com.siyuan.base.dao.entity.User;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
