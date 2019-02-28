@@ -12,6 +12,7 @@ public class UserService {
     @Resource
     private UserRepository userRepository;
 
+
     public Iterable<User> queryUser(){
         System.out.println("查询开始");
         Iterable<User> users = userRepository.findAll();
