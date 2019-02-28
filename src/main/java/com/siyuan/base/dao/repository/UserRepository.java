@@ -9,7 +9,7 @@ public interface UserRepository extends CrudRepository<User, Long> {
     /**
      * 查询用户名为username的用户
      * @param name
-     * @return
+     * @return List<User>
      */
     List<User> findAllByNameEquals(String name);
 
