@@ -1,6 +1,6 @@
-package com.siyuan.base.web;
+package com.siyuan.base.web.controller;
 
-import com.siyuan.base.biz.FamilyTreeRepository;
+import com.siyuan.base.dao.repository.FamilyTreeRepository;
 import com.siyuan.base.dao.entity.Familytree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

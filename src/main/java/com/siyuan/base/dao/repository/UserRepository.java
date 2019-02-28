@@ -1,4 +1,4 @@
-package com.siyuan.base.biz;
+package com.siyuan.base.dao.repository;
 
 import com.siyuan.base.dao.entity.User;
 import org.springframework.data.repository.CrudRepository;

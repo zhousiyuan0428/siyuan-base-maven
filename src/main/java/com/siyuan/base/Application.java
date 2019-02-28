@@ -1,11 +1,10 @@
 package com.siyuan.base;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.siyuan.base.dao.mapper")
+//@MapperScan("com.siyuan.base.dao.mapper")
 public class Application {
 
 //    private static final Logger logger = LoggerFactory.getLogger(Application.class);

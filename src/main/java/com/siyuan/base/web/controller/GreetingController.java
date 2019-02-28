@@ -1,4 +1,4 @@
-package com.siyuan.base.web;
+package com.siyuan.base.web.controller;
 
 import com.siyuan.base.domain.Greeting;
 import com.siyuan.base.domain.Quote;
