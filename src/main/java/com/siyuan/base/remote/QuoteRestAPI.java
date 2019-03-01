@@ -1,6 +1,6 @@
 package com.siyuan.base.remote;
 
-import com.siyuan.base.domain.Quote;
+import com.siyuan.base.domain.model.Quote;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.siyuan.base.domain;
+package com.siyuan.base.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

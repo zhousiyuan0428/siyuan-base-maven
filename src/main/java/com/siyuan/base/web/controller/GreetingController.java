@@ -1,7 +1,7 @@
 package com.siyuan.base.web.controller;
 
-import com.siyuan.base.domain.Greeting;
-import com.siyuan.base.domain.Quote;
+import com.siyuan.base.domain.model.Greeting;
+import com.siyuan.base.domain.model.Quote;
 import com.siyuan.base.remote.QuoteRestAPI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
