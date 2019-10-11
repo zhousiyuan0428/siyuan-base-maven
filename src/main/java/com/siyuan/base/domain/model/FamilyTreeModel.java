@@ -2,10 +2,9 @@ package com.siyuan.base.domain.model;
 
 import lombok.Data;
 
-import javax.persistence.Entity;
+import java.util.List;
 
 @Data
-@Entity
 public class FamilyTreeModel {
 
     protected int sid;
@@ -13,4 +12,6 @@ public class FamilyTreeModel {
     protected int parentId;
 
     protected String name;
+
+    protected List<FamilyTreeModel> children;
 }

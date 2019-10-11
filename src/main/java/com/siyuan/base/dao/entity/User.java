@@ -1,8 +1,6 @@
 package com.siyuan.base.dao.entity;
 
 import lombok.Data;
-import lombok.Getter;
-import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

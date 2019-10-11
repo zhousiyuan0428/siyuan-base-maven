@@ -21,8 +21,8 @@ public class UserController {
     @GetMapping(path = "/all")
     @ResponseBody
     public Iterable<User> getAllUsers() {
-        //return userRepository.findAll();
-        return userService.queryUser();
+        return userRepository.findAll();
+        //return userService.queryUser();
     }
 
     @PostMapping(path = "/save")
@@ -41,4 +41,10 @@ public class UserController {
         userRepository.save(user);
     }
 
+    public static void main(String[] args) {
+        String[] paths = "zhousiyuan.shi.tiancai".split("\\.");
+        System.out.println(paths.length);
+        System.out.println(paths[0]);
+    }
 }
+
