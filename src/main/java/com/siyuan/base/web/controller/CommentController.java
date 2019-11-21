@@ -1,7 +1,5 @@
 package com.siyuan.base.web.controller;
 
-import com.siyuan.base.dao.entity.Comment;
-import com.siyuan.base.dao.repository.CommentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

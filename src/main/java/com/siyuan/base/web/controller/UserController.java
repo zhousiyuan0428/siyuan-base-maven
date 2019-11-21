@@ -1,8 +1,6 @@
 package com.siyuan.base.web.controller;
 
 import com.siyuan.base.biz.service.UserService;
-import com.siyuan.base.dao.entity.User;
-import com.siyuan.base.dao.repository.UserRepository;
 import com.siyuan.base.web.request.UserRequest;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
