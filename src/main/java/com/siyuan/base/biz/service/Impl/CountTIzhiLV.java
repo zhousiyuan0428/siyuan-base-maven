@@ -1,4 +1,4 @@
-package com.siyuan.base.biz.service;
+package com.siyuan.base.biz.service.Impl;
 
 public class CountTIzhiLV {
     public static void main(String[] args) {
