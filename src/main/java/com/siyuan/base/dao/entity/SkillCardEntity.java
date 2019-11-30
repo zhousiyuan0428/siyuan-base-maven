@@ -5,9 +5,8 @@ import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
-public class SkillCard {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+@Table(name = "skill_card", schema = "siyuan_base_maven")
+public class SkillCardEntity {
     private int id;
     private String skillPoints;
     private String skillType;
@@ -18,7 +17,8 @@ public class SkillCard {
     private Timestamp updateDate;
     private String updateBy;
 
-    @Basic
+    @Id
+    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -28,6 +28,7 @@ public class SkillCard {
     }
 
     @Basic
+    @Column(name = "skill_points")
     public String getSkillPoints() {
         return skillPoints;
     }
@@ -37,6 +38,7 @@ public class SkillCard {
     }
 
     @Basic
+    @Column(name = "skill_type")
     public String getSkillType() {
         return skillType;
     }
@@ -46,6 +48,7 @@ public class SkillCard {
     }
 
     @Basic
+    @Column(name = "skill_describe")
     public String getSkillDescribe() {
         return skillDescribe;
     }
@@ -55,6 +58,7 @@ public class SkillCard {
     }
 
     @Basic
+    @Column(name = "acquisition_time")
     public Timestamp getAcquisitionTime() {
         return acquisitionTime;
     }
@@ -64,6 +68,7 @@ public class SkillCard {
     }
 
     @Basic
+    @Column(name = "create_date")
     public Timestamp getCreateDate() {
         return createDate;
     }
@@ -73,6 +78,7 @@ public class SkillCard {
     }
 
     @Basic
+    @Column(name = "create_by")
     public String getCreateBy() {
         return createBy;
     }
@@ -82,6 +88,7 @@ public class SkillCard {
     }
 
     @Basic
+    @Column(name = "update_date")
     public Timestamp getUpdateDate() {
         return updateDate;
     }
@@ -91,6 +98,7 @@ public class SkillCard {
     }
 
     @Basic
+    @Column(name = "update_by")
     public String getUpdateBy() {
         return updateBy;
     }
@@ -103,7 +111,7 @@ public class SkillCard {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SkillCard that = (SkillCard) o;
+        SkillCardEntity that = (SkillCardEntity) o;
         return id == that.id &&
                 Objects.equals(skillPoints, that.skillPoints) &&
                 Objects.equals(skillType, that.skillType) &&

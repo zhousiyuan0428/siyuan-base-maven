@@ -16,6 +16,7 @@ public class SkillCardController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public String getAccounts() {
         System.out.println(skillCardService.saveSkillInfo());
-        return "static/index.html";
+        return "index";
     }
+
 }

@@ -1,8 +1,7 @@
 package com.siyuan.base.dao.repository;
 
-import com.siyuan.base.dao.entity.SkillCard;
+import com.siyuan.base.dao.entity.SkillCardEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface SkillCardRepository extends CrudRepository<SkillCard, Integer>{
-
+public interface SkillCardRepository extends CrudRepository<SkillCardEntity, Integer>{
 }
