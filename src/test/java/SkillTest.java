@@ -7,7 +7,7 @@ public class SkillTest extends ApplicationTests {
     private SkillCardService skillCardService;
     @Test
     public void test11(){
-        skillCardService.saveSkillInfo();
+        System.out.println(skillCardService.queryAll());
         //Assert.assertSame("企业数量有误",500,);
     }
 }
