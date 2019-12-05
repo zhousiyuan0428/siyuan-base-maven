@@ -1,9 +1,9 @@
 package com.siyuan.base.biz.service.Impl;
 
 public class CountTIzhiLV {
-    public static void main(String[] args) {
-        System.out.println(tizhilv(93,160));
-    }
+//    public static void main(String[] args) {
+//        System.out.println(tizhilv(93,160));
+//    }
 
     private static double tizhilv(double yaowei,double tizhong) {
         double c = yaowei*0.74;
