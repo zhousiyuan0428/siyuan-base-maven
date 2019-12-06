@@ -2,6 +2,7 @@ package com.siyuan.base.dao.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
@@ -11,11 +12,20 @@ public class SkillCardEntity {
     private String skillPoints;
     private String skillType;
     private String skillDescribe;
-    private Timestamp acquisitionTime;
-    private Timestamp createDate;
+    private Date acquisitionTime;
+    private Date createDate;
     private String createBy;
-    private Timestamp updateDate;
+    private Date updateDate;
     private String updateBy;
+
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
+    }
 
     @Id
     @Column(name = "id")
@@ -58,26 +68,6 @@ public class SkillCardEntity {
     }
 
     @Basic
-    @Column(name = "acquisition_time")
-    public Timestamp getAcquisitionTime() {
-        return acquisitionTime;
-    }
-
-    public void setAcquisitionTime(Timestamp acquisitionTime) {
-        this.acquisitionTime = acquisitionTime;
-    }
-
-    @Basic
-    @Column(name = "create_date")
-    public Timestamp getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(Timestamp createDate) {
-        this.createDate = createDate;
-    }
-
-    @Basic
     @Column(name = "create_by")
     public String getCreateBy() {
         return createBy;
@@ -87,24 +77,28 @@ public class SkillCardEntity {
         this.createBy = createBy;
     }
 
-    @Basic
-    @Column(name = "update_date")
-    public Timestamp getUpdateDate() {
+    public Date getAcquisitionTime() {
+        return acquisitionTime;
+    }
+
+    public void setAcquisitionTime(Date acquisitionTime) {
+        this.acquisitionTime = acquisitionTime;
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
         return updateDate;
     }
 
-    public void setUpdateDate(Timestamp updateDate) {
+    public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
-    }
-
-    @Basic
-    @Column(name = "update_by")
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
     }
 
     @Override

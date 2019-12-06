@@ -12,6 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/skill")
@@ -32,11 +33,11 @@ public class SkillCardController extends WebMvcConfigurerAdapter {
 
     @PostMapping("/add")
     public String checkPersonInfo(@Valid SkillCardForm skillCardForm, BindingResult bindingResult) {
-        //这里不涉及提交处理
         if (bindingResult.hasErrors()) {
             return "参数验证不通过:" + bindingResult.getAllErrors();
         }
-        return "redirect:/index";
+        String result = skillCardService.saveSkillInfo(skillCardForm);
+        return result;
     }
 
     @PostMapping("/upload")
@@ -45,7 +46,8 @@ public class SkillCardController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/queryAll")
-    public Iterable<SkillCardEntity> queryAll() {
-        return skillCardService.queryAll();
+    @CrossOrigin
+    public List<SkillCardForm> queryAll() {
+        return skillCardService.queryCurrentDayInfo();
     }
 }

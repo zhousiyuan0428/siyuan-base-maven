@@ -12,7 +12,7 @@ public class SkillCardForm {
     private String skillType;
     @NotNull
     private String skillDescribe;
-    private Timestamp acquisitionTime;
+    private String acquisitionTime;
 
     public String getSkillPoints() {
         return skillPoints;
@@ -38,11 +38,11 @@ public class SkillCardForm {
         this.skillDescribe = skillDescribe;
     }
 
-    public Timestamp getAcquisitionTime() {
+    public String getAcquisitionTime() {
         return acquisitionTime;
     }
 
-    public void setAcquisitionTime(Timestamp acquisitionTime) {
+    public void setAcquisitionTime(String acquisitionTime) {
         this.acquisitionTime = acquisitionTime;
     }
 
