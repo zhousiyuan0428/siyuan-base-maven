@@ -1,7 +1,6 @@
 package com.siyuan.base.web.controller;
 
 import com.siyuan.base.biz.service.SkillCardService;
-import com.siyuan.base.dao.entity.SkillCardEntity;
 import com.siyuan.base.web.form.SkillCardForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -46,7 +45,6 @@ public class SkillCardController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/queryAll")
-    @CrossOrigin
     public List<SkillCardForm> queryAll() {
         return skillCardService.queryCurrentDayInfo();
     }
