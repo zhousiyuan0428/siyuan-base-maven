@@ -87,16 +87,45 @@
             </nav>
             <div class="jumbotron">
                 <h1>
-                    Hello, world!
+                    Hello, Partrick!
                 </h1>
                 <p>
-                    This is a template for a simple marketing or informational website. It includes a large callout
-                    called the hero unit and three supporting pieces of content. Use it as a starting point to create
-                    something more unique. - test
+                <h3>此刻，你的疑问是什么？阻碍你的是什么？
+                    <a class="glyphicon glyphicon-plus btn btn-primary btn-xs" aria-hidden="true"
+                       data-toggle="modal" data-target="#modal-question-add"></a>
+                </h3>
+                <div class="modal fade" id="modal-question-add"
+                     aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title" id="myModalLabel">写下你的问题，我们一起解决</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form">
+                                    <div class="form-group">
+                                        <label for="questionDescribe">问题描述</label>
+                                        <textarea class="form-control" id="questionDescribe" rows="4"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputFile">截图上传</label>
+                                        <input type="file" id="InputFile">
+                                        <p class="help-block">Example block-level help text here.</p>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" onclick="saveQuestion()">提交数据</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 </p>
-                <p>
-                    <a class="btn btn-primary btn-large" href="#">Learn more</a>
-                </p>
+                <h5>
+                    <a class="glyphicon glyphicon-wrench btn btn-warning btn-sm" aria-hidden="true"></a>
+                    <div id="questionBroad"></div>
+                </h5>
             </div>
             <div class="row clearfix">
                 <div class="col-md-6 column">
@@ -108,9 +137,7 @@
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
                                     </button>
-                                    <h4 class="modal-title" id="myModalLabel">
-                                        新增技能点
-                                    </h4>
+                                    <h4 class="modal-title">新增技能点</h4>
                                 </div>
                                 <div class="modal-body">
                                     <div class="row">
@@ -119,7 +146,7 @@
                                                 <label for="skillPoints" class="col-sm-4 control-label">技能点数</label>
                                                 <div class="col-sm-6">
                                                     <input type="number" class="form-control" id="skillPoints"
-                                                    value="1"/>
+                                                           value="1"/>
                                                 </div>
                                                 <div class="col-sm-2"></div>
                                             </div>
@@ -159,7 +186,8 @@
                                             <div class="form-group">
                                                 <div class="col-sm-1"></div>
                                                 <div class="col-sm-10">
-                                                    <textarea class="form-control" id="skillDescribe" rows="3"></textarea>
+                                                    <textarea class="form-control" id="skillDescribe"
+                                                              rows="3"></textarea>
                                                 </div>
                                                 <div class="col-sm-1"></div>
                                             </div>

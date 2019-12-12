@@ -6,6 +6,26 @@ $(function () {
     });
 });
 
+function saveQuestion(){
+    let data = {
+        questionDescribe: $(questionDescribe).val(),
+        InputFile: $("#InputFile").val(),
+    }
+    console.log("保存疑问数据.....")
+    console.log(data)
+    // let url = "http://localhost:8082/question/add";//后台数据库接口
+    // //let url = "http://localhost:8082/company/question/add";//生产库接口
+    // $.ajax({
+    //     type: 'post',
+    //     url: url,
+    //     data: data,
+    //     contentType: "application/x-www-form-urlencoded",
+    //     dataType: 'json',
+    //     success: function (res) {
+    //         console.log("返回参数为:" + res);
+    //     }
+    // })
+}
 
 function getTableInfo() {
     console.log("获取当日技能点数数据.....")

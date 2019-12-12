@@ -2,19 +2,21 @@ package com.siyuan.base.dao.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "thing_record", schema = "siyuan_base_maven")
 public class ThingRecordEntity {
     private int id;
-    private String thingResume;
-    private String thingDescride;
+    private String skillType;
+    private String thingDescribe;
+    private String thingPicture;
     private Double spendTime;
     private String createBy;
-    private Timestamp createTime;
+    private Date createTime;
     private String updateBy;
-    private Timestamp updateTime;
+    private Date updateTime;
 
     @Id
     @Column(name = "id")
@@ -27,23 +29,33 @@ public class ThingRecordEntity {
     }
 
     @Basic
-    @Column(name = "thing_resume")
-    public String getThingResume() {
-        return thingResume;
+    @Column(name = "skill_type")
+    public String getSkillType() {
+        return skillType;
     }
 
-    public void setThingResume(String thingResume) {
-        this.thingResume = thingResume;
+    public void setSkillType(String skillType) {
+        this.skillType = skillType;
     }
 
     @Basic
-    @Column(name = "thing_descride")
-    public String getThingDescride() {
-        return thingDescride;
+    @Column(name = "thing_describe")
+    public String getThingDescribe() {
+        return thingDescribe;
     }
 
-    public void setThingDescride(String thingDescride) {
-        this.thingDescride = thingDescride;
+    public void setThingDescribe(String thingDescribe) {
+        this.thingDescribe = thingDescribe;
+    }
+
+    @Basic
+    @Column(name = "thing_picture")
+    public String getThingPicture() {
+        return thingPicture;
+    }
+
+    public void setThingPicture(String thingPicture) {
+        this.thingPicture = thingPicture;
     }
 
     @Basic
@@ -67,16 +79,6 @@ public class ThingRecordEntity {
     }
 
     @Basic
-    @Column(name = "create_time")
-    public Timestamp getCreateTime() {
-        return createTime;
-    }
-
-    public void setCreateTime(Timestamp createTime) {
-        this.createTime = createTime;
-    }
-
-    @Basic
     @Column(name = "update_by")
     public String getUpdateBy() {
         return updateBy;
@@ -86,13 +88,19 @@ public class ThingRecordEntity {
         this.updateBy = updateBy;
     }
 
-    @Basic
-    @Column(name = "update_time")
-    public Timestamp getUpdateTime() {
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
+    }
+
+    public Date getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Timestamp updateTime) {
+    public void setUpdateTime(Date updateTime) {
         this.updateTime = updateTime;
     }
 
@@ -102,8 +110,9 @@ public class ThingRecordEntity {
         if (o == null || getClass() != o.getClass()) return false;
         ThingRecordEntity that = (ThingRecordEntity) o;
         return id == that.id &&
-                Objects.equals(thingResume, that.thingResume) &&
-                Objects.equals(thingDescride, that.thingDescride) &&
+                Objects.equals(skillType, that.skillType) &&
+                Objects.equals(thingDescribe, that.thingDescribe) &&
+                Objects.equals(thingPicture, that.thingPicture) &&
                 Objects.equals(spendTime, that.spendTime) &&
                 Objects.equals(createBy, that.createBy) &&
                 Objects.equals(createTime, that.createTime) &&
@@ -113,6 +122,6 @@ public class ThingRecordEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, thingResume, thingDescride, spendTime, createBy, createTime, updateBy, updateTime);
+        return Objects.hash(id, skillType, thingDescribe, thingPicture, spendTime, createBy, createTime, updateBy, updateTime);
     }
 }
