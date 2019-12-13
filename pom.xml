@@ -72,6 +72,11 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.1.0.Final</version>
         </dependency>
+        <dependency>
+            <groupId>siyuan-base-maven</groupId>
+            <artifactId>siyuan-base-maven</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <properties>

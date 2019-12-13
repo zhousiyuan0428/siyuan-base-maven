@@ -85,142 +85,111 @@
                 </div>
 
             </nav>
+            <!-- 问题的模态框内容 -->
             <div class="jumbotron">
-                <h1>
-                    Hello, Partrick!
-                </h1>
+                <h1>Hello, Partrick!</h1>
                 <p>
                 <h3>此刻，你的疑问是什么？阻碍你的是什么？
                     <a class="glyphicon glyphicon-plus btn btn-primary btn-xs" aria-hidden="true"
                        data-toggle="modal" data-target="#modal-question-add"></a>
                 </h3>
+                <!-- 问题的模态框内容 -->
                 <div class="modal fade" id="modal-question-add"
                      aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
                     <div class="modal-dialog modal-sm" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-                                <h4 class="modal-title" id="myModalLabel">写下你的问题，我们一起解决</h4>
+                                <h4 class="modal-title">写下你的问题，我们一起解决</h4>
                             </div>
                             <div class="modal-body">
                                 <form class="form">
                                     <div class="form-group">
-                                        <label for="questionDescribe">问题描述</label>
-                                        <textarea class="form-control" id="questionDescribe" rows="4"></textarea>
+                                        <label for="skillType">问题归属类别</label>
+                                        <select class="form-control" id="skillType">
+                                            <option>JavaSE</option>
+                                            <option>Web</option>
+                                            <option>Architect</option>
+                                        </select>
+                                        <div class="col-sm-2"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="thingDescribe">问题描述</label>
+                                        <textarea class="form-control" id="thingDescribe" rows="4"></textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="InputFile">截图上传</label>
                                         <input type="file" id="InputFile">
-                                        <p class="help-block">Example block-level help text here.</p>
+                                        <p class="help-block">上传附件缩略图展示区</p>
                                     </div>
                                 </form>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" onclick="saveQuestion()">提交数据</button>
+                                <button type="button" class="btn btn-info" onclick="saveQuestion()">提交数据</button>
                             </div>
                         </div>
                     </div>
                 </div>
                 </p>
-                <h5>
-                    <a class="glyphicon glyphicon-wrench btn btn-warning btn-sm" aria-hidden="true"></a>
-                    <div id="questionBroad"></div>
-                </h5>
-            </div>
-            <div class="row clearfix">
-                <div class="col-md-6 column">
-                    <button type="button" data-toggle="modal" data-target="#modal-skill-add">新增技能点</button>
-                    <div class="modal fade" id="modal-skill-add"
-                         aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog modal-sm" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×
-                                    </button>
-                                    <h4 class="modal-title">新增技能点</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="row">
-                                        <form class="form-horizontal">
-                                            <div class="form-group">
-                                                <label for="skillPoints" class="col-sm-4 control-label">技能点数</label>
-                                                <div class="col-sm-6">
-                                                    <input type="number" class="form-control" id="skillPoints"
-                                                           value="1"/>
-                                                </div>
-                                                <div class="col-sm-2"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="skillType" class="col-sm-4 control-label">Type</label>
-                                                <div class="col-sm-6">
-                                                    <select class="form-control" id="skillType">
-                                                        <option>JavaSE</option>
-                                                        <option>Web</option>
-                                                        <option>Architect</option>
-                                                    </select>
-                                                </div>
-                                                <div class="col-sm-2"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="acquisitionTime" class="col-sm-5 control-label">
-                                                    技能获取时间
-                                                </label>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-1"></div>
-                                                <div class="col-sm-10">
-                                                    <div class='input-group date' id='acquisitionTime'>
-                                                        <input id="acquisitionTime1" type='text' class="form-control"/>
-                                                        <span class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-sm-1"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="skillDescribe" class="col-sm-4 control-label">
-                                                    技能描述
-                                                </label>
-                                            </div>
-                                            <div class="form-group">
-                                                <div class="col-sm-1"></div>
-                                                <div class="col-sm-10">
-                                                    <textarea class="form-control" id="skillDescribe"
-                                                              rows="3"></textarea>
-                                                </div>
-                                                <div class="col-sm-1"></div>
-                                            </div>
-                                        </form>
+                <div id="questionBroad"></div>
+                <!-- 解决的模态框内容 -->
+                <div class="modal fade" id="modal-solution-add"
+                     aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h4 class="modal-title">记录一下你的解决方案吧</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form class="form">
+                                    <div class="form-group">
+                                        <label for="thingDescribe">问题描述</label>
+                                        <input id="questionId" type="hidden"/>
+                                        <p id="solutionForQuestion"></p>
                                     </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                                    <button type="button" class="btn btn-default" onclick="saveInfo()">提交数据</button>
-                                </div>
+                                    <div class="form-group">
+                                        <label for="thingDescribe">方案描述</label>
+                                        <textarea class="form-control" id="solutionDescribe" rows="4"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="InputFile">截图上传</label>
+                                        <input type="file" id="solutionPicture">
+                                        <p class="help-block">上传附件缩略图展示区</p>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-info" onclick="saveSolution()">提交数据</button>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                        <tr>
-                            <th>Type</th>
-                            <th>描述</th>
-                            <th>点数</th>
-                            <th>获取时间</th>
-                        </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
                 </div>
-
+            </div>
+            <!-- 今日获取技能内容 -->
+            <div class="row clearfix">
+                <!-- 今日获取技能点表格内容 -->
                 <div class="col-md-6 column">
-                    <!--<img src="../static/3.jpg" height="300" width="200"/>-->
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th>描述</th>
+                                <th>点数</th>
+                                <th>获取时间</th>
+                            </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                    <!-- 今日获取技能点图表内容 -->
+                    <div class="col-md-6 column">
+                        <!--<img src="../static/3.jpg" height="300" width="200"/>-->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </body>
 <!-- 新 Bootstrap 核心 CSS 文件 -->
 <link rel="stylesheet" href="css/bootstrap.min.css">

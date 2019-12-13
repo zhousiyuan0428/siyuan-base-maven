@@ -3,8 +3,12 @@ package com.siyuan.base.web.controller;
 import com.siyuan.base.biz.service.SkillCardService;
 import com.siyuan.base.web.form.SkillCardForm;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.web.filter.CorsFilter;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
@@ -45,6 +49,7 @@ public class SkillCardController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/queryAll")
+    @CrossOrigin(origins = "*",allowCredentials="true",allowedHeaders = "",methods = {})
     public List<SkillCardForm> queryAll() {
         return skillCardService.queryCurrentDayInfo();
     }
