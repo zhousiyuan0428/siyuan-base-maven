@@ -47,4 +47,15 @@ public class ThingRecordForm {
     public void setSpendTime(Double spendTime) {
         this.spendTime = spendTime;
     }
+
+    @Override
+    public String toString() {
+        return "ThingRecordForm{" +
+                "id=" + id +
+                ", skillType='" + skillType + '\'' +
+                ", thingDescribe='" + thingDescribe + '\'' +
+                ", thingPicture='" + thingPicture + '\'' +
+                ", spendTime=" + spendTime +
+                '}';
+    }
 }

@@ -8,7 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "thing_record", schema = "siyuan_base_maven")
 public class ThingRecordEntity {
-    private int id;
+    private long id;
     private String skillType;
     private String thingDescribe;
     private String thingPicture;
@@ -17,14 +17,24 @@ public class ThingRecordEntity {
     private Date createTime;
     private String updateBy;
     private Date updateTime;
+    private int thingStatus;
+    private Integer relationId;
+
+    public void setCreateTime(Timestamp createTime) {
+        this.createTime = createTime;
+    }
+
+    public void setUpdateTime(Timestamp updateTime) {
+        this.updateTime = updateTime;
+    }
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -88,6 +98,8 @@ public class ThingRecordEntity {
         this.updateBy = updateBy;
     }
 
+    @Basic
+    @Column(name = "create_time")
     public Date getCreateTime() {
         return createTime;
     }
@@ -96,6 +108,8 @@ public class ThingRecordEntity {
         this.createTime = createTime;
     }
 
+    @Basic
+    @Column(name = "update_time")
     public Date getUpdateTime() {
         return updateTime;
     }
@@ -123,5 +137,42 @@ public class ThingRecordEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, skillType, thingDescribe, thingPicture, spendTime, createBy, createTime, updateBy, updateTime);
+    }
+
+    @Basic
+    @Column(name = "thing_status")
+    public int getThingStatus() {
+        return thingStatus;
+    }
+
+    public void setThingStatus(int thingStatus) {
+        this.thingStatus = thingStatus;
+    }
+
+    @Basic
+    @Column(name = "relation_id")
+    public Integer getRelationId() {
+        return relationId;
+    }
+
+    public void setRelationId(Integer relationId) {
+        this.relationId = relationId;
+    }
+
+    @Override
+    public String toString() {
+        return "ThingRecordEntity{" +
+                "id=" + id +
+                ", skillType='" + skillType + '\'' +
+                ", thingDescribe='" + thingDescribe + '\'' +
+                ", thingPicture='" + thingPicture + '\'' +
+                ", spendTime=" + spendTime +
+                ", createBy='" + createBy + '\'' +
+                ", createTime=" + createTime +
+                ", updateBy='" + updateBy + '\'' +
+                ", updateTime=" + updateTime +
+                ", thingStatus=" + thingStatus +
+                ", relationId=" + relationId +
+                '}';
     }
 }

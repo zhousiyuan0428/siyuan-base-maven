@@ -1,11 +1,12 @@
 package com.siyuan.base.dao.entity;
 
 import javax.persistence.*;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
 @Entity
-@Table(name = "skill_card", schema = "siyuan_base_maven")
+@Table(name = "skill_card", schema = "siyuan_base_maven", catalog = "")
 public class SkillCardEntity {
     private int id;
     private String skillPoints;
@@ -17,7 +18,20 @@ public class SkillCardEntity {
     private Date updateDate;
     private String updateBy;
 
+    public void setAcquisitionTime(Timestamp acquisitionTime) {
+        this.acquisitionTime = acquisitionTime;
+    }
 
+    public void setCreateDate(Timestamp createDate) {
+        this.createDate = createDate;
+    }
+
+    public void setUpdateDate(Timestamp updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    @Basic
+    @Column(name = "update_by")
     public String getUpdateBy() {
         return updateBy;
     }
@@ -76,6 +90,8 @@ public class SkillCardEntity {
         this.createBy = createBy;
     }
 
+    @Basic
+    @Column(name = "acquisition_time")
     public Date getAcquisitionTime() {
         return acquisitionTime;
     }
@@ -84,6 +100,8 @@ public class SkillCardEntity {
         this.acquisitionTime = acquisitionTime;
     }
 
+    @Basic
+    @Column(name = "create_date")
     public Date getCreateDate() {
         return createDate;
     }
@@ -92,6 +110,8 @@ public class SkillCardEntity {
         this.createDate = createDate;
     }
 
+    @Basic
+    @Column(name = "update_date")
     public Date getUpdateDate() {
         return updateDate;
     }

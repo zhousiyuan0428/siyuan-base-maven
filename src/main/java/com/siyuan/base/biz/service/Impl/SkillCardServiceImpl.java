@@ -3,6 +3,7 @@ package com.siyuan.base.biz.service.Impl;
 import com.siyuan.base.biz.service.SkillCardService;
 import com.siyuan.base.dao.entity.SkillCardEntity;
 import com.siyuan.base.dao.repository.SkillCardRepository;
+import com.siyuan.base.domain.model.WebResponse;
 import com.siyuan.base.web.form.SkillCardForm;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,21 +38,23 @@ public class SkillCardServiceImpl implements SkillCardService {
     }
 
     @Override
-    public String saveSkillInfo(SkillCardForm form) {
+    public WebResponse saveSkillInfo(SkillCardForm form) {
         SkillCardEntity entity = new SkillCardEntity();
         BeanUtils.copyProperties(form,entity);
-        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        try {
-            entity.setAcquisitionTime(sdf2.parse(form.getAcquisitionTime()));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+//        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//        try {
+//            entity.setAcquisitionTime(sdf2.parse(form.getAcquisitionTime()));
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+        entity.setAcquisitionTime(new Date());
+        entity.setAcquisitionTime(new Date());
         entity.setCreateBy("周思远");
         entity.setCreateDate(new Date());
         entity.setUpdateBy("周思远");
         entity.setUpdateDate(new Date());
-        System.out.println(skillCardRepository.save(entity)+"");
-        return skillCardRepository.save(entity)+"";
+        skillCardRepository.save(entity);
+        return new WebResponse("save success","0000");
     }
 
 }

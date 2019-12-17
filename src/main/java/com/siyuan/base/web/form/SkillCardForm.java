@@ -1,16 +1,9 @@
 package com.siyuan.base.web.form;
 
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import java.sql.Timestamp;
-
 public class SkillCardForm {
-    @NotNull
-    @Size(min=0 , max=9)
+
     private String skillPoints;
-    @NotNull
     private String skillType;
-    @NotNull
     private String skillDescribe;
     private String acquisitionTime;
 
