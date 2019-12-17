@@ -1,8 +1,8 @@
 package com.siyuan.base.domain.Enum;
 
 public enum CompanyBis {
-    THING_INIT(0,"初始化"),
-    THING_DEAL(1,"已处理"),
+    THING_INIT(1,"初始化"),
+    THING_DEAL(4,"已处理"),
     THING_HANGUP(2,"挂起"),
     THING_SUSPEND(3,"暂停");
 

@@ -19,6 +19,21 @@ public class ThingRecordEntity {
     private Date updateTime;
     private int thingStatus;
     private Integer relationId;
+    private String solutionDescribe;
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    @Basic
+    @Column(name = "solution_describe")
+    public String getSolutionDescribe() {
+        return solutionDescribe;
+    }
+
+    public void setSolutionDescribe(String solutionDescribe) {
+        this.solutionDescribe = solutionDescribe;
+    }
 
     public void setCreateTime(Timestamp createTime) {
         this.createTime = createTime;

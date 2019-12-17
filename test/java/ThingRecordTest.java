@@ -1,10 +1,15 @@
 import com.siyuan.base.biz.service.ThingRecordService;
+import com.siyuan.base.biz.util.TimeUtil;
+import com.siyuan.base.dao.entity.SkillCardEntity;
 import com.siyuan.base.dao.entity.ThingRecordEntity;
 import com.siyuan.base.dao.repository.ThingRecordRepository;
+import com.siyuan.base.web.form.ThingRecordForm;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
+import java.text.NumberFormat;
+import java.util.Date;
 
 public class ThingRecordTest extends ApplicationTests {
     @Autowired
@@ -13,17 +18,43 @@ public class ThingRecordTest extends ApplicationTests {
     private ThingRecordService thingRecordService;
 
     @Test
-    public void findByStatus(){
+    public void findByStatus() {
         System.out.println(thingRecordRepository.findByStatus(0));
     }
 
     @Test
     @Transactional
-    public void updateById(){
+    public void updateById() {
         ThingRecordEntity entity = new ThingRecordEntity();
-        entity.setId(67);
-        entity.setThingStatus(2);
+        Long id = Long.valueOf("1576568734254");
+        entity.setId(id);
+        entity.setThingStatus(4);
+        entity.setSolutionDescribe("TEST");
         System.out.println(thingRecordRepository.updateById(entity));
     }
 
+    @Test
+    @Transactional
+    public void TestSolution() {
+        ThingRecordForm form = new ThingRecordForm();
+        Long id = Long.valueOf("1576571176758");
+        form.setId(id);
+        form.setSolutionDescribe("TEST");
+        System.out.println(thingRecordService.update(form));
+    }
+
+    public void TimeUtil() {
+//        SkillCardEntity entity = new SkillCardEntity();
+//        ThingRecordEntity thingRecordEntity = thingRecordRepository.findById(form.getThingId()).get();
+//        NumberFormat nf = NumberFormat.getNumberInstance();
+//        nf.setMaximumFractionDigits(2);
+//        String point = nf.format(TimeUtil.calculatetimeGapHour(thingRecordEntity.getCreateTime(), new Date()));
+//        entity.setSkillPoints(point);
+//        entity.setCreateBy("周思远");
+//        entity.setCreateDate(new Date());
+//        entity.setAcquisitionTime(new Date());
+//        entity.setUpdateDate(new Date());
+//        entity.setSkillType(thingRecordEntity.getSkillType());
+//        entity.setSkillDescribe(thingRecordEntity.getThingDescribe());
+    }
 }

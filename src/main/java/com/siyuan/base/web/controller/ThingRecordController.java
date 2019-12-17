@@ -20,11 +20,19 @@ public class ThingRecordController {
     private ThingRecordService thingRecordService;
 
     @PostMapping("/add")
-    public WebResponse checkPersonInfo(@Valid ThingRecordForm thingRecordForm, BindingResult bindingResult) {
+    public WebResponse saveInfo(@Valid ThingRecordForm thingRecordForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return new WebResponse("error", bindingResult.getAllErrors()+"");
         }
         return  thingRecordService.save(thingRecordForm);
+    }
+
+    @PostMapping("/update")
+    public WebResponse updateInfo(@Valid ThingRecordForm thingRecordForm, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return new WebResponse("error", bindingResult.getAllErrors()+"");
+        }
+        return  thingRecordService.update(thingRecordForm);
     }
 
     @PostMapping("/upload")

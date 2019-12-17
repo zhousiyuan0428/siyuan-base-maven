@@ -14,11 +14,6 @@ public class SkillTest extends ApplicationTests {
         System.out.println(skillCardService.queryCurrentDayInfo());
         //Assert.assertSame("企业数量有误",500,);
     }
-    @Test
-    public void test2(){
-        System.out.println(thingRecordService.getOneQuestion());
-    }
-
 
 
 }

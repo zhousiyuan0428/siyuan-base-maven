@@ -9,7 +9,7 @@ public interface ThingRecordService {
 
     WebResponse save(ThingRecordForm thingRecordForm);
 
-    ThingRecordForm getOneQuestion();
-
     List<ThingRecordForm> getThingRecordByStatus(int thingStatus);
+
+    WebResponse update(ThingRecordForm thingRecordForm);
 }

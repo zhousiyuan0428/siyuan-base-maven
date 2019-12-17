@@ -1,19 +1,18 @@
-let questionId = -1;
+let questionId = 0;
 let questionContent = "";
 let barHundred = 100;
 let blank1 = "&nbsp;";
 let blank2 = "&nbsp;&nbsp;&nbsp;&nbsp;";
 
 $(function () {
-    getThingRecodInfo(1);
+    getThingRecordInfo(1);
     getTableInfo();
 });
 /** JQuery 定时器 **/
 setInterval(progressBarFlush, 36000);
 
 /*** 获取事件信息的js方法 ****/
-function getThingRecodInfo(thingStatus) {
-    console.log("事件 - 获取阻碍事件的数据 start")
+function getThingRecordInfo(thingStatus) {
     let data = {
         "thingStatus":thingStatus
     }
@@ -26,24 +25,25 @@ function getThingRecodInfo(thingStatus) {
         contentType: "application/x-www-form-urlencoded",
         dataType: 'json',
         success: function (res) {
-            console.log("事件 - 获取阻碍事件的数据 end ")
             if(res.length == 0){
-                ModelControl(true);
                 return;
             }
             if(thingStatus == 1){
                 //绑定全局变量
                 questionId = res[0].id;
-                $("#questionId").val(questionId);
                 questionContent = res[0].thingDescribe;
-                //按钮组和黑板内容的渲染
+                //按钮组和方案黑板内容的渲染
                 accumulateButton(1);
                 $("#solutionForQuestion").html(questionContent);
                 //调用同样的方法查询当前挂起的任务
-                getThingRecodInfo(2)
+                getThingRecordInfo(2)
             }
             if(thingStatus == 2){
-                $("#SuspendContent").html(res[0].thingDescribe);
+                let SuspendContent = "";
+                for (let i = 0; i < res.length; i++) {
+                    SuspendContent+=res[i].thingDescribe
+                }
+                $("#SuspendContent").html(SuspendContent);
             }
         }
     })
@@ -52,11 +52,11 @@ function getThingRecodInfo(thingStatus) {
 /*** 新增阻碍事件的js方法 ****/
 function addThingRecord() {
     let data = {
+        id: questionId,
         thingDescribe: $("#thingDescribe").val(),
         skillType: $("#skillType").val(),
         InputFile: $("#InputFile").val(),
     }
-    console.log("事件 - 保存事件数据 start")
     console.log(data)
     let url = "http://localhost:8080/thingRecord/add";//后台数据库接口
     //let url = "http://localhost:8082/company/thingRecord/add";//生产库接口
@@ -67,24 +67,26 @@ function addThingRecord() {
         dataType: 'JSON',
         contentType: "application/x-www-form-urlencoded",
         success: function (res) {
-            console.log("事件 - 保存事件数据 end"),
+            //根据保存结果给出用户提示
+            if(res.ressultCode=="0000"){
+                console.log("新增成功")
+            }
+            //隐藏模态框重新查询
             $('#modal-question-add').modal('hide')
-            getThingRecodInfo(1);
-            HangUpTask();
+            getThingRecordInfo(1);
         }
     })
 }
 
 /*** 新增当前阻碍事件解决方案的js方法 ****/
-function saveSolution() {
+function updateThingRecord() {
     let data = {
-        thingId: $("#questionId").val(),
-        skillDescribe: $("#solutionDescribe").val(),
+        id: questionId,
+        solutionDescribe: $("#solutionDescribe").val(),
     }
-    console.log("事件 - 保存方案数据 start")
     console.log(data)
-    let url = "http://localhost:8080/skill/add";//后台数据库接口
-    //let url = "http://localhost:8082/company/skill/add";//生产库接口
+    let url = "http://localhost:8080/thingRecord/update";//后台数据库接口
+    //let url = "http://localhost:8082/company/thingRecord/update";//生产库接口
     $.ajax({
         type: 'post',
         url: url,
@@ -213,10 +215,11 @@ function accumulateButton(type) {
 /** 模态框的控制 **/
 function ModelControl(Flag) {
     if (Flag) {
-        $('#addTask').attr("disabled", false);
+        $('#addTask').attr("disabled", true);
+        $('#addTask').attr("data-target", "#");
         $('#buttonSolution').attr("disabled", false);
         $('#buttonStop').attr("disabled", false);
-        $('#addTask').attr("data-target", "#modal-question-add");
+        //$('#addTask').attr("data-target", "#modal-question-add");
         $('#buttonSolution').attr("data-target", "#modal-solution-add");
         $('#buttonStop').attr("data-target", "#modal-question-add");
     } else {

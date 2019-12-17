@@ -9,12 +9,6 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ThingRecordRepository extends CrudRepository<ThingRecordEntity,Integer> {
-    /**
-     * Temp
-     * @return ThingRecordEntity
-     */
-    @Query(value = "select * FROM thing_record ORDER BY id DESC LIMIT 0,1", nativeQuery = true)
-    ThingRecordEntity getOneQuestion();
 
     /**
      * 根据任务状态查询任务信息
@@ -25,11 +19,21 @@ public interface ThingRecordRepository extends CrudRepository<ThingRecordEntity,
     List<ThingRecordEntity> findByStatus(@Param("thingStatus") int thingStatus);
 
     /**
+     * 根据任务id查询任务信息
+     * @param id
+     * @return List<ThingRecordEntity>
+     */
+    @Query(value = "SELECT * FROM thing_record r WHERE r.id = :id", nativeQuery = true)
+    ThingRecordEntity findById(@Param("id") long id);
+
+    /**
      * 根据任务id进行任务修改
      * @param tre
      * @return int
      */
     @Modifying
-    @Query(value = "update ThingRecordEntity t set t.thingStatus = :#{#tre.thingStatus} where t.id = :#{#tre.id}")
+    @Query(value = "update ThingRecordEntity t set t.thingStatus = :#{#tre.thingStatus},"+
+            "t.solutionDescribe = :#{#tre.solutionDescribe},t.spendTime = :#{#tre.spendTime},"+
+            "t.updateBy = :#{#tre.updateBy},t.updateTime = :#{#tre.updateTime} where t.id = :#{#tre.id}")
     int updateById(@Param("tre") ThingRecordEntity tre);
 }

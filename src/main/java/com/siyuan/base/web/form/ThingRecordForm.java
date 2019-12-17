@@ -2,17 +2,26 @@ package com.siyuan.base.web.form;
 
 public class ThingRecordForm {
 
-    private int id;
+    private long id;
     private String skillType;
     private String thingDescribe;
     private String thingPicture;
     private Double spendTime;
+    private String solutionDescribe;
 
-    public int getId() {
+    public String getSolutionDescribe() {
+        return solutionDescribe;
+    }
+
+    public void setSolutionDescribe(String solutionDescribe) {
+        this.solutionDescribe = solutionDescribe;
+    }
+
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

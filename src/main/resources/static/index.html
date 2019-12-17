@@ -101,79 +101,6 @@
                             <p></p>
                             <div id="SuspendProgress"></div>
                         </div>
-                        <!-- 事件新增模态框内容 -->
-                        <div class="modal fade" id="modal-question-add"
-                             aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog modal-sm" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            ×
-                                        </button>
-                                        <h4 class="modal-title">写下你的问题，我们一起解决</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form class="form">
-                                            <div class="form-group">
-                                                <label for="skillType">问题归属类别</label>
-                                                <select class="form-control" id="skillType">
-                                                    <option>JavaSE</option>
-                                                    <option>Web</option>
-                                                    <option>Architect</option>
-                                                </select>
-                                                <div class="col-sm-2"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="thingDescribe">问题描述</label>
-                                                <textarea class="form-control" id="thingDescribe"
-                                                          rows="4"></textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="InputFile">截图上传</label>
-                                                <input type="file" id="InputFile">
-                                                <p class="help-block">上传附件缩略图展示区</p>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-info" onclick="addThingRecord()">提交数据
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 解决的模态框内容 -->
-                        <div class="modal fade" id="modal-solution-add"
-                             aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                                            ×
-                                        </button>
-                                        <h4 class="modal-title">记录一下你的解决方案吧</h4>
-                                    </div>
-                                    <div class="modal-body">
-                                        <form class="form">
-                                            <div class="form-group">
-                                                <label for="thingDescribe">事件描述</label>
-                                                <input id="questionId" type="hidden"/>
-                                                <p id="solutionForQuestion"></p>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="thingDescribe">方案描述</label>
-                                                <textarea class="form-control" id="solutionDescribe"
-                                                          rows="4"></textarea>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-info" onclick="saveSolution()">提交数据
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-md-6 column">
                             <div id="SuspendContent"></div>
                         </div>
@@ -200,6 +127,78 @@
                 <div class="col-md-6 column">
                     <!--<img src="../static/3.jpg" height="300" width="200"/>-->
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 事件新增模态框内容 -->
+<div class="modal fade" id="modal-question-add"
+     aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title">写下你的问题，我们一起解决</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="skillType">问题归属类别</label>
+                        <select class="form-control" id="skillType">
+                            <option>JavaSE</option>
+                            <option>Web</option>
+                            <option>Architect</option>
+                        </select>
+                        <div class="col-sm-2"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="thingDescribe">问题描述</label>
+                        <textarea class="form-control" id="thingDescribe"
+                                  rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="InputFile">截图上传</label>
+                        <input type="file" id="InputFile">
+                        <p class="help-block">上传附件缩略图展示区</p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" onclick="addThingRecord()">提交数据
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 更新事件：写入事件解决方案 -->
+<div class="modal fade" id="modal-solution-add"
+     aria-labelledby="myModalLabel" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    ×
+                </button>
+                <h4 class="modal-title">记录一下你的解决方案吧</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="thingDescribe">事件描述</label>
+                        <p id="solutionForQuestion"></p>
+                    </div>
+                    <div class="form-group">
+                        <label for="thingDescribe">方案描述</label>
+                        <textarea class="form-control" id="solutionDescribe"
+                                  rows="4"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-info" onclick="updateThingRecord()">提交数据
+                </button>
             </div>
         </div>
     </div>
