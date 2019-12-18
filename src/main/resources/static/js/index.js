@@ -1,5 +1,7 @@
-let questionId = 0;
-let questionContent = "";
+let thingRecordId = 0;
+let relationId = 0;
+let thingDescribe = "";
+let createTime = "";
 let barHundred = 100;
 let blank1 = "&nbsp;";
 let blank2 = "&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -30,11 +32,13 @@ function getThingRecordInfo(thingStatus) {
             }
             if(thingStatus == 1){
                 //绑定全局变量
-                questionId = res[0].id;
-                questionContent = res[0].thingDescribe;
+                thingRecordId = res[0].id;
+                thingDescribe = res[0].thingDescribe;
+                relationId = res[0].relationId;
+                createTime = res[0].createTime;
                 //按钮组和方案黑板内容的渲染
                 accumulateButton(1);
-                $("#solutionForQuestion").html(questionContent);
+                $("#solutionForQuestion").html(thingDescribe);
                 //调用同样的方法查询当前挂起的任务
                 getThingRecordInfo(2)
             }
@@ -52,7 +56,7 @@ function getThingRecordInfo(thingStatus) {
 /*** 新增阻碍事件的js方法 ****/
 function addThingRecord() {
     let data = {
-        id: questionId,
+        id: thingRecordId,
         thingDescribe: $("#thingDescribe").val(),
         skillType: $("#skillType").val(),
         InputFile: $("#InputFile").val(),
@@ -78,15 +82,19 @@ function addThingRecord() {
     })
 }
 
-/*** 新增当前阻碍事件解决方案的js方法 ****/
+/*** 事件解决方案提交的js方法 ****/
 function updateThingRecord() {
     let data = {
-        id: questionId,
+        id: thingRecordId,
+        relationId : relationId,
+        createTime : createTime,
         solutionDescribe: $("#solutionDescribe").val(),
+
     }
+        console.log(createTime);
     console.log(data)
     let url = "http://localhost:8080/thingRecord/update";//后台数据库接口
-    //let url = "http://localhost:8082/company/thingRecord/update";//生产库接口
+   // let url = "http://localhost:8082/company/thingRecord/update";//生产库接口
     $.ajax({
         type: 'post',
         url: url,
@@ -139,22 +147,22 @@ function getTableInfo() {
 /*** 挂起当前任务的js方法 ****/
 function HangUpTask() {
     let data = {
-        thingId: $("#questionId").val(),
-        questionContent: questionContent,
+        thingId: $("#thingRecordId").val(),
+        thingDescribe: thingDescribe,
     }
     console.log(data);
     let bottonStop = `<a class="glyphicon glyphicon-off btn btn-primary btn-xs" aria-hidden="true"` +
         `onclick="test()" " ></a>`;
     let originalContent = $("#SuspendContent").html();
-    let addContetnt = "<h5>" + bottonStop + blank2 + questionContent + "</h5>";
+    let addContetnt = "<h5>" + bottonStop + blank2 + thingDescribe+ "</h5>";
     $("#SuspendContent").html(originalContent+addContetnt);
 }
 
 /*** 暂停当前任务的js方法 ****/
 function SuspendTask() {
     let data = {
-        thingId: $("#questionId").val(),
-        questionContent: questionContent,
+        thingId: $("#thingRecordId").val(),
+        thingDescribe: thingDescribe,
     }
     let SuspendProgress =
         '<div class="progress">' +
@@ -183,8 +191,8 @@ function progressBarFlush() {
 /*** 继续当前任务的js方法 ****/
 function GoOnTask() {
     let data = {
-        thingId: $("#questionId").val(),
-        questionContent: questionContent,
+        thingId: $("#thingRecordId").val(),
+        thingDescribe: thingDescribe,
     }
     $("#SuspendProgress").empty();
     $("#questionBroad").empty();
@@ -204,10 +212,10 @@ function accumulateButton(type) {
         `onclick="GoOnTask()" title="继续任务"></a>`;
     //按钮组内容拼接
     if (type == 2) {
-        $("#questionBroad").html(buttonSolution + blank1 + buttonStop + blank1 + buttonGoOn + blank2 + questionContent)
+        $("#questionBroad").html(buttonSolution + blank1 + buttonStop + blank1 + buttonGoOn + blank2 + thingDescribe)
         ModelControl(false);
     } else {
-        $("#questionBroad").html(buttonSolution + blank1 + buttonStop + blank1 + buttonSuspend + blank2 + questionContent)
+        $("#questionBroad").html(buttonSolution + blank1 + buttonStop + blank1 + buttonSuspend + blank2 + thingDescribe)
         ModelControl(true);
     }
 }

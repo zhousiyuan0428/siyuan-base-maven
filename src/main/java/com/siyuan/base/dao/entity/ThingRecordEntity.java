@@ -18,7 +18,7 @@ public class ThingRecordEntity {
     private String updateBy;
     private Date updateTime;
     private int thingStatus;
-    private Integer relationId;
+    private long relationId;
     private String solutionDescribe;
 
     public void setId(int id) {
@@ -166,11 +166,11 @@ public class ThingRecordEntity {
 
     @Basic
     @Column(name = "relation_id")
-    public Integer getRelationId() {
+    public long getRelationId() {
         return relationId;
     }
 
-    public void setRelationId(Integer relationId) {
+    public void setRelationId(long relationId) {
         this.relationId = relationId;
     }
 

@@ -32,7 +32,7 @@ public class ThingRecordController {
         if (bindingResult.hasErrors()) {
             return new WebResponse("error", bindingResult.getAllErrors()+"");
         }
-        return  thingRecordService.update(thingRecordForm);
+        return  thingRecordService.dealRecordInfo(thingRecordForm);
     }
 
     @PostMapping("/upload")

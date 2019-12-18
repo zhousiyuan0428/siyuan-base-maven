@@ -11,5 +11,5 @@ public interface ThingRecordService {
 
     List<ThingRecordForm> getThingRecordByStatus(int thingStatus);
 
-    WebResponse update(ThingRecordForm thingRecordForm);
+    WebResponse dealRecordInfo(ThingRecordForm thingRecordForm);
 }

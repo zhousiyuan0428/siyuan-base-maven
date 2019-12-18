@@ -40,7 +40,7 @@ public class ThingRecordTest extends ApplicationTests {
         Long id = Long.valueOf("1576571176758");
         form.setId(id);
         form.setSolutionDescribe("TEST");
-        System.out.println(thingRecordService.update(form));
+        System.out.println(thingRecordService.dealRecordInfo(form));
     }
 
     public void TimeUtil() {

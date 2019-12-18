@@ -1,5 +1,7 @@
 package com.siyuan.base.web.form;
 
+import java.util.Date;
+
 public class ThingRecordForm {
 
     private long id;
@@ -8,6 +10,24 @@ public class ThingRecordForm {
     private String thingPicture;
     private Double spendTime;
     private String solutionDescribe;
+    private long relationId;
+    private String createTime;
+
+    public String getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime;
+    }
+
+    public long getRelationId() {
+        return relationId;
+    }
+
+    public void setRelationId(long relationId) {
+        this.relationId = relationId;
+    }
 
     public String getSolutionDescribe() {
         return solutionDescribe;
