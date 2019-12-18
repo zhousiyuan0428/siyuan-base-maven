@@ -2,6 +2,7 @@ let thingRecordId = 0;
 let relationId = 0;
 let thingDescribe = "";
 let createTime = "";
+let skillType = "";
 let barHundred = 100;
 let blank1 = "&nbsp;";
 let blank2 = "&nbsp;&nbsp;&nbsp;&nbsp;";
@@ -28,6 +29,8 @@ function getThingRecordInfo(thingStatus) {
         dataType: 'json',
         success: function (res) {
             if(res.length == 0){
+                $('#addTask').attr("disabled", false);
+                $('#addTask').attr("data-target", "#modal-question-add");
                 return;
             }
             if(thingStatus == 1){
@@ -36,6 +39,7 @@ function getThingRecordInfo(thingStatus) {
                 thingDescribe = res[0].thingDescribe;
                 relationId = res[0].relationId;
                 createTime = res[0].createTime;
+                skillType = res[0].skillType
                 //按钮组和方案黑板内容的渲染
                 accumulateButton(1);
                 $("#solutionForQuestion").html(thingDescribe);
@@ -45,7 +49,7 @@ function getThingRecordInfo(thingStatus) {
             if(thingStatus == 2){
                 let SuspendContent = "";
                 for (let i = 0; i < res.length; i++) {
-                    SuspendContent+=res[i].thingDescribe
+                    SuspendContent+="<h4 class='bg-danger'>"+res[i].thingDescribe+"</h4>";
                 }
                 $("#SuspendContent").html(SuspendContent);
             }
@@ -61,7 +65,6 @@ function addThingRecord() {
         skillType: $("#skillType").val(),
         InputFile: $("#InputFile").val(),
     }
-    console.log(data)
     let url = "http://localhost:8080/thingRecord/add";//后台数据库接口
     //let url = "http://localhost:8082/company/thingRecord/add";//生产库接口
     $.ajax({
@@ -71,28 +74,27 @@ function addThingRecord() {
         dataType: 'JSON',
         contentType: "application/x-www-form-urlencoded",
         success: function (res) {
-            //根据保存结果给出用户提示
             if(res.ressultCode=="0000"){
                 console.log("新增成功")
             }
-            //隐藏模态框重新查询
-            $('#modal-question-add').modal('hide')
-            getThingRecordInfo(1);
         }
     })
+    //隐藏模态框重新查询
+    setTimeout(function(){
+        $('#modal-question-add').modal('hide')
+        getThingRecordInfo(1)
+    },800)
 }
 
-/*** 事件解决方案提交的js方法 ****/
+/*** 挂起事件新增/事件解决方案提交的js方法 ****/
 function updateThingRecord() {
     let data = {
         id: thingRecordId,
         relationId : relationId,
         createTime : createTime,
+        skillType:skillType,
         solutionDescribe: $("#solutionDescribe").val(),
-
     }
-        console.log(createTime);
-    console.log(data)
     let url = "http://localhost:8080/thingRecord/update";//后台数据库接口
    // let url = "http://localhost:8082/company/thingRecord/update";//生产库接口
     $.ajax({
@@ -102,16 +104,23 @@ function updateThingRecord() {
         dataType: 'JSON',
         contentType: "application/x-www-form-urlencoded",
         success: function (res) {
-            console.log("事件 - 保存方案数据 end " + res.resultCode)
-            $('#modal-solution-add').modal('hide');
-            $('#questionBroad').empty();
         }
     })
+    setTimeout(function(){
+        $('#modal-solution-add').modal('hide');
+        thingRecordId = "";
+        relationId = "";
+        createTime = "";
+        skillType = "";
+        $('#questionBroad').empty();
+        $('#SuspendContent').empty();
+        getThingRecordInfo(1)
+        getTableInfo();
+    },800)
 }
 
 /*** 获取今日技能点数的js方法 ****/
 function getTableInfo() {
-    console.log("技能点 - 获取当日技能点数数据.....")
     let url = "http://localhost:8080/skill/queryAll";//开发环境
     //let url = "http://localhost:8082/company/skill/queryAll";//生产库接口
     $.ajax({
@@ -120,7 +129,6 @@ function getTableInfo() {
         contentType: "application/x-www-form-urlencoded",
         dataType: 'json',
         success: function (res) {
-            console.log("技能点 - 获取完成 end")
             if (res.length == 0) {
                 return;
             }
@@ -142,20 +150,6 @@ function getTableInfo() {
             }
         }
     })
-}
-
-/*** 挂起当前任务的js方法 ****/
-function HangUpTask() {
-    let data = {
-        thingId: $("#thingRecordId").val(),
-        thingDescribe: thingDescribe,
-    }
-    console.log(data);
-    let bottonStop = `<a class="glyphicon glyphicon-off btn btn-primary btn-xs" aria-hidden="true"` +
-        `onclick="test()" " ></a>`;
-    let originalContent = $("#SuspendContent").html();
-    let addContetnt = "<h5>" + bottonStop + blank2 + thingDescribe+ "</h5>";
-    $("#SuspendContent").html(originalContent+addContetnt);
 }
 
 /*** 暂停当前任务的js方法 ****/

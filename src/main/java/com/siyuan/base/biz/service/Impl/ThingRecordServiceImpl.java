@@ -1,5 +1,6 @@
 package com.siyuan.base.biz.service.Impl;
 
+import com.siyuan.base.biz.service.SkillCardService;
 import com.siyuan.base.biz.service.ThingRecordService;
 import com.siyuan.base.biz.util.NumberUtil;
 import com.siyuan.base.biz.util.TimeUtil;
@@ -23,6 +24,8 @@ public class ThingRecordServiceImpl implements ThingRecordService {
 
     @Autowired
     private ThingRecordRepository thingRecordRepository;
+    @Autowired
+    private SkillCardService skillCardService;
 
     @Override
     public List<ThingRecordForm> getThingRecordByStatus(int thingStatus) {
@@ -67,8 +70,11 @@ public class ThingRecordServiceImpl implements ThingRecordService {
         entity.setThingStatus(THING_DEAL.getStatus());
         setUpdateInfo(entity,form.getCreateTime());
         thingRecordRepository.updateById(entity);
-        //Logic 修改关联父级任务信息
-        if(form.getRelationId() != 0){
+        if(form.getRelationId() == 0){
+            //Logic 当前任务就是父级任务写入技能表
+            skillCardService.saveSkillInfo(entity);
+        }else{
+            //Logic 修改关联父级任务信息
             ThingRecordEntity entityFather = thingRecordRepository.findById(form.getRelationId());
             entityFather.setThingStatus(THING_INIT.getStatus());
             thingRecordRepository.updateById(entityFather);
@@ -85,5 +91,6 @@ public class ThingRecordServiceImpl implements ThingRecordService {
         entity.setUpdateTime(new Date());
         return entity;
     }
+
 
 }

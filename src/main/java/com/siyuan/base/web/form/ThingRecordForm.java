@@ -1,7 +1,5 @@
 package com.siyuan.base.web.form;
 
-import java.util.Date;
-
 public class ThingRecordForm {
 
     private long id;
