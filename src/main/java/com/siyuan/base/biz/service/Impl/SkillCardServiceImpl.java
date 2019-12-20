@@ -8,6 +8,7 @@ import com.siyuan.base.domain.model.WebResponse;
 import com.siyuan.base.web.form.SkillCardForm;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -23,6 +24,7 @@ public class SkillCardServiceImpl implements SkillCardService {
     @Autowired
     private SkillCardRepository skillCardRepository;
 
+    @Cacheable(value = "skills")
     @Override
     public List<SkillCardForm> queryCurrentDayInfo() {
         Iterable<SkillCardEntity> skillCardEntities = skillCardRepository.findAll();

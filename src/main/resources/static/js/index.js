@@ -6,6 +6,7 @@ let skillType = "";
 let barHundred = 100;
 let blank1 = "&nbsp;";
 let blank2 = "&nbsp;&nbsp;&nbsp;&nbsp;";
+let currentEnv = "local";//product || local
 
 $(function () {
     getThingRecordInfo(1);
@@ -19,8 +20,11 @@ function getThingRecordInfo(thingStatus) {
     let data = {
         "thingStatus":thingStatus
     }
-    let url = "http://localhost:8080/thingRecord/getInfo";//开发环境
-    //let url = "http://localhost:8082/company/thingRecord/getInfo";//生产库接口
+    if(currentEnv == "local"){
+        url = "http://localhost:8080/thingRecord/getInfo";//后台数据库接口
+    }else{
+        url = "http://localhost:8082/company/thingRecord/getInfo";//生产库接口
+    }
     $.ajax({
         type: 'get',
         url: url,
@@ -65,8 +69,11 @@ function addThingRecord() {
         skillType: $("#skillType").val(),
         InputFile: $("#InputFile").val(),
     }
-    let url = "http://localhost:8080/thingRecord/add";//后台数据库接口
-    //let url = "http://localhost:8082/company/thingRecord/add";//生产库接口
+    if(currentEnv == "local"){
+        url = "http://localhost:8080/thingRecord/add";//后台数据库接口
+    }else{
+        url = "http://localhost:8082/company/thingRecord/add";//生产库接口
+    }
     $.ajax({
         type: 'post',
         url: url,
@@ -95,8 +102,11 @@ function updateThingRecord() {
         skillType:skillType,
         solutionDescribe: $("#solutionDescribe").val(),
     }
-    let url = "http://localhost:8080/thingRecord/update";//后台数据库接口
-   // let url = "http://localhost:8082/company/thingRecord/update";//生产库接口
+    if(currentEnv == "local"){
+        url = "http://localhost:8080/thingRecord/update";//后台数据库接口
+    }else{
+        url = "http://localhost:8082/company/thingRecord/update";//生产库接口
+    }
     $.ajax({
         type: 'post',
         url: url,
@@ -121,8 +131,11 @@ function updateThingRecord() {
 
 /*** 获取今日技能点数的js方法 ****/
 function getTableInfo() {
-    let url = "http://localhost:8080/skill/queryAll";//开发环境
-    //let url = "http://localhost:8082/company/skill/queryAll";//生产库接口
+    if(currentEnv == "local"){
+        url = "http://localhost:8080/skill/queryAll";//后台数据库接口
+    }else{
+        url = "http://localhost:8082/company/skill/queryAll";//生产库接口
+    }
     $.ajax({
         type: 'get',
         url: url,

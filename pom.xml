@@ -82,12 +82,15 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.1.0.Final</version>
         </dependency>
+        <!-- 添加 缓存的jar包 -->
         <dependency>
-            <groupId>siyuan-base-maven</groupId>
-            <artifactId>siyuan-base-maven</artifactId>
-            <version>1.0-SNAPSHOT</version>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
-
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
     </dependencies>
 
     <properties>
@@ -96,7 +99,7 @@
 
     <build>
          <!--应与application.properties(或application.yml)中context-path保持一致-->
-        <finalName>company</finalName>
+        <!--<finalName>company</finalName>-->
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
