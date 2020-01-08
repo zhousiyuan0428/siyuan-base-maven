@@ -17,6 +17,7 @@ public class SkillCardEntity {
     private String createBy;
     private Date updateDate;
     private String updateBy;
+    private String skillTypeFlag;
 
     public void setAcquisitionTime(Timestamp acquisitionTime) {
         this.acquisitionTime = acquisitionTime;
@@ -139,5 +140,30 @@ public class SkillCardEntity {
     @Override
     public int hashCode() {
         return Objects.hash(id, skillPoints, skillType, skillDescribe, acquisitionTime, createDate, createBy, updateDate, updateBy);
+    }
+
+    @Override
+    public String toString() {
+        return "SkillCardEntity{" +
+                "id=" + id +
+                ", skillPoints='" + skillPoints + '\'' +
+                ", skillType='" + skillType + '\'' +
+                ", skillDescribe='" + skillDescribe + '\'' +
+                ", acquisitionTime=" + acquisitionTime +
+                ", createDate=" + createDate +
+                ", createBy='" + createBy + '\'' +
+                ", updateDate=" + updateDate +
+                ", updateBy='" + updateBy + '\'' +
+                '}';
+    }
+
+    @Basic
+    @Column(name = "skill_type_flag")
+    public String getSkillTypeFlag() {
+        return skillTypeFlag;
+    }
+
+    public void setSkillTypeFlag(String skillTypeFlag) {
+        this.skillTypeFlag = skillTypeFlag;
     }
 }

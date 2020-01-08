@@ -1,17 +1,30 @@
 package com.siyuan.base.dao.repository;
 
 import com.siyuan.base.dao.entity.SkillCardEntity;
+import com.siyuan.base.web.form.SkillCardForm;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
 public interface SkillCardRepository extends CrudRepository<SkillCardEntity, Integer>{
+    /**
+     * 获取今日得到的技能点数
+     * @return List<SkillCardEntity>
+     */
+    @Query(value = "select * FROM skill_card s where to_days(acquisition_time) = to_days(now())", nativeQuery = true)
+    List<SkillCardEntity> getCurrentInfo();
 
     /**
-     * 根据书籍主键查询书籍详细信息
-     * @return 书籍详细信息
+     * 获取时间短技能点数
+     * @return List<SkillCardEntity>
      */
-    @Query(value = "select s.skill_type,s.skill_describe,s.skill_points,s.acquisition_time FROM skill_card s where to_days(acquisition_time) = to_days(now())", nativeQuery = true)
-    List<SkillCardEntity> getSkillCardOneByTime();
+    @Query(value = "select * FROM skill_card s where s.create_date between :starDate and :endDate", nativeQuery = true)
+    List<SkillCardEntity> getGoalInfo(@Param("starDate") String starDate,@Param("endDate") String endDate);
+
+    public static void main(String[] args) {
+        int i = 0;
+        System.out.println(++i);
+    }
 }

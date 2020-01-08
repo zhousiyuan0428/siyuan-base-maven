@@ -3,6 +3,7 @@ package com.siyuan.base.web.controller;
 import com.siyuan.base.biz.service.SkillCardService;
 import com.siyuan.base.domain.model.WebResponse;
 import com.siyuan.base.web.form.SkillCardForm;
+import com.siyuan.base.web.form.SkillEchartForm;
 import com.siyuan.base.web.form.ThingRecordForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -24,12 +25,9 @@ public class SkillCardController extends WebMvcConfigurerAdapter {
         return skillCardService.queryCurrentDayInfo();
     }
 
-    @PostMapping("/add")
-    public WebResponse checkPersonInfo(@Valid SkillCardForm skillCardForm, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new WebResponse("error", bindingResult.getAllErrors()+"");
-        }
-        return skillCardService.saveSkillInfo(skillCardForm);
+    @GetMapping("/getEchartInfo")
+    public List<SkillEchartForm> getEchartInfo() {
+        return skillCardService.querySevenDayInfo();
     }
 
 }

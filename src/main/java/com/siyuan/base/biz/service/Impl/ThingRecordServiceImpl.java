@@ -11,10 +11,11 @@ import com.siyuan.base.web.form.ThingRecordForm;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import sun.util.calendar.LocalGregorianCalendar;
 
 import javax.transaction.Transactional;
-import java.util.Date;
-import java.util.List;
+import java.sql.Time;
+import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import static com.siyuan.base.domain.Enum.CompanyBis.*;
@@ -68,12 +69,10 @@ public class ThingRecordServiceImpl implements ThingRecordService {
         ThingRecordEntity entity = new ThingRecordEntity();
         BeanUtils.copyProperties(form, entity);
         entity.setThingStatus(THING_DEAL.getStatus());
-        setUpdateInfo(entity,form.getCreateTime());
+        setUpdateInfo(entity, form.getCreateTime());
         thingRecordRepository.updateById(entity);
-        if(form.getRelationId() == 0){
-            //Logic 当前任务就是父级任务写入技能表
-            skillCardService.saveSkillInfo(entity);
-        }else{
+        skillCardService.saveSkillInfo(entity);
+        if (form.getRelationId() != 0) {
             //Logic 修改关联父级任务信息
             ThingRecordEntity entityFather = thingRecordRepository.findById(form.getRelationId());
             entityFather.setThingStatus(THING_INIT.getStatus());
@@ -82,14 +81,51 @@ public class ThingRecordServiceImpl implements ThingRecordService {
         return new WebResponse("success", "0000");
     }
 
-    private ThingRecordEntity setUpdateInfo(ThingRecordEntity entity,String cts){
+    private ThingRecordEntity setUpdateInfo(ThingRecordEntity entity, String cts) {
         //Logic 事件花费时间点数的计算
         Date createTime = TimeUtil.turnToDate(cts);
-        Double gapHour = TimeUtil.calculatetimeGapHour(createTime,new Date());
-        entity.setSpendTime(Double.valueOf(NumberUtil.format(gapHour,1)));
+        Double gapHour = TimeUtil.calculatetimeGapHour(createTime, new Date());
+        entity.setSpendTime(Double.valueOf(NumberUtil.format(gapHour, 1)));
         entity.setUpdateBy("周思远");
         entity.setUpdateTime(new Date());
         return entity;
+    }
+
+    public static void main(String[] args) {
+        int[] a = {49, 38, 65, 97, 76, 13, 27, 49, 78, 34, 12, 64, 1, 8};
+        ArrayList arrayList = new ArrayList();
+        Collections.sort(arrayList);
+        //BubbleSort(a);
+        quickSort(a, 0, a.length - 1);
+        for (int i = 0; i < a.length; i++) {
+            System.out.println(a[i]);
+        }
+    }
+
+    //冒泡排序
+    private static int[] BubbleSort(int[] nums) {
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = 0; j < nums.length - i - 1; j++) {
+                if (nums[j] > nums[j + 1]) {
+                    int temp = nums[j];
+                    nums[j] = nums[j + 1];
+                    nums[j + 1] = temp;
+                }
+            }
+        }
+        return nums;
+    }
+
+    //快速查找 - 递归
+    private static int[] quickSort(int[] nums, int minTarget, int maxTarget) {
+        //跳出递归的条件
+        if (maxTarget < minTarget) {
+            return nums;
+        }
+        //基准数字：一般是最小坐标的目标值
+        int baseTarget = nums[minTarget];
+
+        return nums;
     }
 
 

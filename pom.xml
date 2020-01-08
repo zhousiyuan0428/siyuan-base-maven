@@ -85,7 +85,7 @@
         <!-- 添加 缓存的jar包 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-redis</artifactId>
+            <artifactId>spring-boot-starter-data-cache</artifactId>
         </dependency>
         <dependency>
             <groupId>net.sf.ehcache</groupId>

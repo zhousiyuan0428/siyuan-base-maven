@@ -51,9 +51,9 @@ function getThingRecordInfo(thingStatus) {
                 getThingRecordInfo(2)
             }
             if(thingStatus == 2){
-                let SuspendContent = "";
+                let SuspendContent = $("#SuspendContent").html();;
                 for (let i = 0; i < res.length; i++) {
-                    SuspendContent+="<h4 class='bg-danger'>"+res[i].thingDescribe+"</h4>";
+                    SuspendContent+="<p>"+res[i].thingDescribe+"</p>";
                 }
                 $("#SuspendContent").html(SuspendContent);
             }
@@ -124,6 +124,7 @@ function updateThingRecord() {
         skillType = "";
         $('#questionBroad').empty();
         $('#SuspendContent').empty();
+        $('#SuspendContent1').hide();
         getThingRecordInfo(1)
         getTableInfo();
     },800)
@@ -219,10 +220,14 @@ function accumulateButton(type) {
         `onclick="GoOnTask()" title="继续任务"></a>`;
     //按钮组内容拼接
     if (type == 2) {
-        $("#questionBroad").html(buttonSolution + blank1 + buttonStop + blank1 + buttonGoOn + blank2 + thingDescribe)
+        $("#questionBroad").html(buttonSolution + blank1 + buttonStop + blank1 + buttonGoOn + blank2)
+        $("#SuspendContent").html(thingDescribe)
+        $('#SuspendContent').attr("class", "bg-warning");
         ModelControl(false);
     } else {
-        $("#questionBroad").html(buttonSolution + blank1 + buttonStop + blank1 + buttonSuspend + blank2 + thingDescribe)
+        $("#questionBroad").html(buttonSolution + blank1 + buttonStop + blank1 + buttonSuspend + blank2)
+        $("#SuspendContent").html(thingDescribe)
+        $('#SuspendContent').attr("class", "bg-success");
         ModelControl(true);
     }
 }
