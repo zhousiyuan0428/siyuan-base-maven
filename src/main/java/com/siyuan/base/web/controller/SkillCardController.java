@@ -1,6 +1,7 @@
 package com.siyuan.base.web.controller;
 
 import com.siyuan.base.biz.service.SkillCardService;
+import com.siyuan.base.dao.entity.SkillCardEntity;
 import com.siyuan.base.domain.model.WebResponse;
 import com.siyuan.base.web.form.SkillCardForm;
 import com.siyuan.base.web.form.SkillEchartForm;
@@ -28,6 +29,12 @@ public class SkillCardController extends WebMvcConfigurerAdapter {
     @GetMapping("/getEchartInfo")
     public List<SkillEchartForm> getEchartInfo() {
         return skillCardService.querySevenDayInfo();
+    }
+
+    @PostMapping("/addInfo")
+    public void addInfo(@Valid SkillCardEntity skillCardEntity) {
+        skillCardService.saveSkillInfo(skillCardEntity);
+        return;
     }
 
 }

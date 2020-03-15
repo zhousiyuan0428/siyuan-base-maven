@@ -9,7 +9,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-public class TimeUtil {
+public class CalculateUtil {
 
     /**
      * 比较两个时间相差小时

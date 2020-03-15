@@ -21,10 +21,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <!--<exclusions>-->
-                <!--<exclusion>-->
-                    <!--<groupId>org.springframework.boot</groupId>-->
-                    <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
-                <!--</exclusion>-->
+            <!--<exclusion>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+            <!--</exclusion>-->
             <!--</exclusions>-->
         </dependency>
         <dependency>
@@ -82,15 +82,6 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.1.0.Final</version>
         </dependency>
-        <!-- 添加 缓存的jar包 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-data-cache</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>net.sf.ehcache</groupId>
-            <artifactId>ehcache</artifactId>
-        </dependency>
     </dependencies>
 
     <properties>
@@ -98,7 +89,7 @@
     </properties>
 
     <build>
-         <!--应与application.properties(或application.yml)中context-path保持一致-->
+        <!--应与application.properties(或application.yml)中context-path保持一致-->
         <!--<finalName>company</finalName>-->
         <plugins>
             <plugin>

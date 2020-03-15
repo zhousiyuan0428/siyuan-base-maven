@@ -1,6 +1,4 @@
 import com.siyuan.base.biz.service.ThingRecordService;
-import com.siyuan.base.biz.util.TimeUtil;
-import com.siyuan.base.dao.entity.SkillCardEntity;
 import com.siyuan.base.dao.entity.ThingRecordEntity;
 import com.siyuan.base.dao.repository.ThingRecordRepository;
 import com.siyuan.base.web.form.ThingRecordForm;
@@ -8,8 +6,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.transaction.Transactional;
-import java.text.NumberFormat;
-import java.util.Date;
 
 public class ThingRecordTest extends ApplicationTests {
     @Autowired
@@ -48,7 +44,7 @@ public class ThingRecordTest extends ApplicationTests {
 //        ThingRecordEntity thingRecordEntity = thingRecordRepository.findById(form.getThingId()).get();
 //        NumberFormat nf = NumberFormat.getNumberInstance();
 //        nf.setMaximumFractionDigits(2);
-//        String point = nf.format(TimeUtil.calculatetimeGapHour(thingRecordEntity.getCreateTime(), new Date()));
+//        String point = nf.format(CalculateUtil.calculatetimeGapHour(thingRecordEntity.getCreateTime(), new Date()));
 //        entity.setSkillPoints(point);
 //        entity.setCreateBy("周思远");
 //        entity.setCreateDate(new Date());

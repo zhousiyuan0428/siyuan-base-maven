@@ -11,35 +11,13 @@ public class SkillCardEntity {
     private int id;
     private String skillPoints;
     private String skillType;
+    private String skillTypeFlag;
     private String skillDescribe;
     private Date acquisitionTime;
     private Date createDate;
     private String createBy;
     private Date updateDate;
     private String updateBy;
-    private String skillTypeFlag;
-
-    public void setAcquisitionTime(Timestamp acquisitionTime) {
-        this.acquisitionTime = acquisitionTime;
-    }
-
-    public void setCreateDate(Timestamp createDate) {
-        this.createDate = createDate;
-    }
-
-    public void setUpdateDate(Timestamp updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    @Basic
-    @Column(name = "update_by")
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy;
-    }
 
     @Id
     @Column(name = "id")
@@ -72,6 +50,16 @@ public class SkillCardEntity {
     }
 
     @Basic
+    @Column(name = "skill_type_flag")
+    public String getSkillTypeFlag() {
+        return skillTypeFlag;
+    }
+
+    public void setSkillTypeFlag(String skillTypeFlag) {
+        this.skillTypeFlag = skillTypeFlag;
+    }
+
+    @Basic
     @Column(name = "skill_describe")
     public String getSkillDescribe() {
         return skillDescribe;
@@ -79,16 +67,6 @@ public class SkillCardEntity {
 
     public void setSkillDescribe(String skillDescribe) {
         this.skillDescribe = skillDescribe;
-    }
-
-    @Basic
-    @Column(name = "create_by")
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy;
     }
 
     @Basic
@@ -112,6 +90,16 @@ public class SkillCardEntity {
     }
 
     @Basic
+    @Column(name = "create_by")
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy;
+    }
+
+    @Basic
     @Column(name = "update_date")
     public Date getUpdateDate() {
         return updateDate;
@@ -119,6 +107,16 @@ public class SkillCardEntity {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    @Basic
+    @Column(name = "update_by")
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy;
     }
 
     @Override
@@ -129,6 +127,7 @@ public class SkillCardEntity {
         return id == that.id &&
                 Objects.equals(skillPoints, that.skillPoints) &&
                 Objects.equals(skillType, that.skillType) &&
+                Objects.equals(skillTypeFlag, that.skillTypeFlag) &&
                 Objects.equals(skillDescribe, that.skillDescribe) &&
                 Objects.equals(acquisitionTime, that.acquisitionTime) &&
                 Objects.equals(createDate, that.createDate) &&
@@ -139,31 +138,6 @@ public class SkillCardEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, skillPoints, skillType, skillDescribe, acquisitionTime, createDate, createBy, updateDate, updateBy);
-    }
-
-    @Override
-    public String toString() {
-        return "SkillCardEntity{" +
-                "id=" + id +
-                ", skillPoints='" + skillPoints + '\'' +
-                ", skillType='" + skillType + '\'' +
-                ", skillDescribe='" + skillDescribe + '\'' +
-                ", acquisitionTime=" + acquisitionTime +
-                ", createDate=" + createDate +
-                ", createBy='" + createBy + '\'' +
-                ", updateDate=" + updateDate +
-                ", updateBy='" + updateBy + '\'' +
-                '}';
-    }
-
-    @Basic
-    @Column(name = "skill_type_flag")
-    public String getSkillTypeFlag() {
-        return skillTypeFlag;
-    }
-
-    public void setSkillTypeFlag(String skillTypeFlag) {
-        this.skillTypeFlag = skillTypeFlag;
+        return Objects.hash(id, skillPoints, skillType, skillTypeFlag, skillDescribe, acquisitionTime, createDate, createBy, updateDate, updateBy);
     }
 }

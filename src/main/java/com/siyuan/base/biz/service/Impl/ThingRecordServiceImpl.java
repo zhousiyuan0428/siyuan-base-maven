@@ -2,8 +2,8 @@ package com.siyuan.base.biz.service.Impl;
 
 import com.siyuan.base.biz.service.SkillCardService;
 import com.siyuan.base.biz.service.ThingRecordService;
+import com.siyuan.base.biz.util.CalculateUtil;
 import com.siyuan.base.biz.util.NumberUtil;
-import com.siyuan.base.biz.util.TimeUtil;
 import com.siyuan.base.dao.entity.ThingRecordEntity;
 import com.siyuan.base.dao.repository.ThingRecordRepository;
 import com.siyuan.base.domain.model.WebResponse;
@@ -11,10 +11,8 @@ import com.siyuan.base.web.form.ThingRecordForm;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.util.calendar.LocalGregorianCalendar;
 
 import javax.transaction.Transactional;
-import java.sql.Time;
 import java.util.*;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -35,7 +33,7 @@ public class ThingRecordServiceImpl implements ThingRecordService {
         for (int i = 0; i < recordEntities.size(); i++) {
             ThingRecordForm form = new ThingRecordForm();
             BeanUtils.copyProperties(recordEntities.get(i), form);
-            form.setCreateTime(TimeUtil.format(recordEntities.get(i).getCreateTime()));
+            form.setCreateTime(CalculateUtil.format(recordEntities.get(i).getCreateTime()));
             result.add(form);
         }
         return result;
@@ -71,7 +69,7 @@ public class ThingRecordServiceImpl implements ThingRecordService {
         entity.setThingStatus(THING_DEAL.getStatus());
         setUpdateInfo(entity, form.getCreateTime());
         thingRecordRepository.updateById(entity);
-        skillCardService.saveSkillInfo(entity);
+        //skillCardService.saveSkillInfo(entity);
         if (form.getRelationId() != 0) {
             //Logic 修改关联父级任务信息
             ThingRecordEntity entityFather = thingRecordRepository.findById(form.getRelationId());
@@ -83,8 +81,8 @@ public class ThingRecordServiceImpl implements ThingRecordService {
 
     private ThingRecordEntity setUpdateInfo(ThingRecordEntity entity, String cts) {
         //Logic 事件花费时间点数的计算
-        Date createTime = TimeUtil.turnToDate(cts);
-        Double gapHour = TimeUtil.calculatetimeGapHour(createTime, new Date());
+        Date createTime = CalculateUtil.turnToDate(cts);
+        Double gapHour = CalculateUtil.calculatetimeGapHour(createTime, new Date());
         entity.setSpendTime(Double.valueOf(NumberUtil.format(gapHour, 1)));
         entity.setUpdateBy("周思远");
         entity.setUpdateTime(new Date());

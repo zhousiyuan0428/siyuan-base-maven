@@ -1,7 +1,6 @@
 package com.siyuan.base.dao.repository;
 
 import com.siyuan.base.dao.entity.SkillCardEntity;
-import com.siyuan.base.web.form.SkillCardForm;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

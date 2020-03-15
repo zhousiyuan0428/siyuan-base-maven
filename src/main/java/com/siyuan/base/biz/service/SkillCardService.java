@@ -1,5 +1,6 @@
 package com.siyuan.base.biz.service;
 
+import com.siyuan.base.dao.entity.SkillCardEntity;
 import com.siyuan.base.dao.entity.ThingRecordEntity;
 import com.siyuan.base.web.form.SkillCardForm;
 import com.siyuan.base.web.form.SkillEchartForm;
@@ -10,7 +11,7 @@ public interface SkillCardService {
 
     List<SkillCardForm> queryCurrentDayInfo();
 
-    void saveSkillInfo(ThingRecordEntity entity);
+    void saveSkillInfo(SkillCardEntity entity);
 
     List<SkillEchartForm>  querySevenDayInfo();
 }
