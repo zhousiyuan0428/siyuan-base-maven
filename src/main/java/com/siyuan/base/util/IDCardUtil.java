@@ -107,8 +107,4 @@ public class IDCardUtil {
         }
     }
 
-    public static void main(String[] args) throws ParseException{
-        System.out.println(IDCardUtil.getAge("500101199004281464"));
-    }
-
 }
