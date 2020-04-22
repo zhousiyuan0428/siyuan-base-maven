@@ -1,9 +1,8 @@
 package com.siyuan.base.biz.service.Impl;
 
 import com.siyuan.base.biz.service.SkillCardService;
-import com.siyuan.base.biz.util.CalculateUtil;
+import com.siyuan.base.util.CalculateUtil;
 import com.siyuan.base.dao.entity.SkillCardEntity;
-import com.siyuan.base.dao.entity.ThingRecordEntity;
 import com.siyuan.base.dao.repository.SkillCardRepository;
 import com.siyuan.base.web.form.SkillCardForm;
 import com.siyuan.base.web.form.SkillEchartForm;

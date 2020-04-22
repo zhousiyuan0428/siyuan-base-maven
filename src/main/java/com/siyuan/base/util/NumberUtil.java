@@ -1,4 +1,4 @@
-package com.siyuan.base.biz.util;
+package com.siyuan.base.util;
 
 import java.text.NumberFormat;
 
